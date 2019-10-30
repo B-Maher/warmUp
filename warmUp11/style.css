@@ -1,0 +1,54 @@
+.container {
+	margin: auto;
+	display: flex;
+	width: 70vw;
+	height: 10vh;
+	justify-content: space-around;
+	align-items: center;
+
+}
+
+button{
+	margin: auto;
+	width: 70px;
+	height: 30px;
+	text-align: center;
+	background-color: black;
+	color: white; 
+}
+#create {
+	background-color: green;
+}
+
+.list {
+	margin: auto;
+	display: flex;
+	width: 70vw;
+	height: 60vh;
+	justify-content: space-around;
+	align-items: flex-start;
+	border: solid 2px black;
+	background-color: gray;
+}
+
+ul {
+	width: 50%;
+	text-align: center;
+	list-style-type: none;
+	border: solid 1px gray;
+	font-size: 20px;
+}
+h1 {
+	height: 10vh;
+	font-size: 35px;
+	margin: auto;
+	text-align: center;
+}
+body {
+	background-color: lightgray;
+}
+#a {
+	height: 60vh;
+	width:1px;
+	border: solid 2px black;
+}
