@@ -31,3 +31,69 @@
             filter_list([1,'a','b',0,15]) == [1,0,15]
             filter_list([1,2,'aasf','1','123',123]) == [1,2,123]
 */
+//1
+function romanNumbers(str, result) {
+	result = result || 0;
+	if(str.length === 0) {
+		return result;
+	}
+	if(str.length > 1){
+		if(str[0].toUpperCase() === 'I' && (str[1].toUpperCase() === 'V') || (str[1].toUpperCase() === 'X')){
+		result -= 1;
+		return romanNumbers(str.slice(1), result)
+	}
+	}
+	if(str[0].toUpperCase() === 'I'){
+		result += 1;
+		return romanNumbers(str.slice(1), result)
+	}
+	if(str[0].toUpperCase() === 'V'){
+		result += 5;
+		return romanNumbers(str.slice(1), result)
+	}
+	if(str[0].toUpperCase() === 'X'){
+		result += 10;
+		return romanNumbers(str.slice(1), result)
+	}
+	if(str[0].toUpperCase() === 'L'){
+		result += 50;
+		return romanNumbers(str.slice(1), result)
+	}
+	if(str[0].toUpperCase() === 'C'){
+		result += 100;
+		return romanNumbers(str.slice(1), result)
+	}
+	if(str[0].toUpperCase() === 'D'){
+		result += 500;
+		return romanNumbers(str.slice(1), result)
+	}
+	if(str[0].toUpperCase() === 'M'){
+		result += 1000;
+		return romanNumbers(str.slice(1), result)
+	}
+}
+
+//2
+function toCamelCase(string) {
+	var result = "";
+	for(var i = 0; i < string.length; i++) {
+		if(string[i] === "_" || string[i] === '-'){
+			result += string[i + 1].toUpperCase();
+			i++
+		}else {
+			result += string[i]
+		}
+	}
+	return result
+}
+
+//3
+function filter_list(array) {
+	var arr = [];
+	for (var i = 0; i < array.length; i++){
+		if(typeof (array[i]) === 'number'){
+			arr.push(array[i])
+		}
+	}
+	return arr
+}
