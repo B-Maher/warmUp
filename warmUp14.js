@@ -20,4 +20,23 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 
 var maxProfit = function(prices) {
   // YOUR CODE HERE
+  var buy = prices[0];
+  var sell = 0;
+  var maxProfit = 0;
+  for (var i = 1; i < prices.length; i++) {
+  	if(prices[i] < buy){
+  		buy = prices[i];
+  		sell = 0;
+  	}
+  	if(prices[i + 1] > sell){
+  		sell = prices[i];
+  	}
+  	if(sell - buy > maxProfit){
+  		maxProfit = sell - buy
+  	}
+  	if(buy === prices[prices.length - 1] && sell === 0){
+  		return 'No transaction is done, your max profit = 0';
+  	}
+  }
+  return 'max profit = ' + maxProfit;
 };
