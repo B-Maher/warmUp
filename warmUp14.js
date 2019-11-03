@@ -22,21 +22,18 @@ var maxProfit = function(prices) {
   // YOUR CODE HERE
   var buy = prices[0];
   var sell = 0;
-  var maxProfit = 0;
-  for (var i = 1; i < prices.length; i++) {
+  var profit = 0;
+  for (var i = 0; i < prices.length; i++) {
   	if(prices[i] < buy){
   		buy = prices[i];
   		sell = 0;
   	}
   	if(prices[i + 1] > sell){
-  		sell = prices[i];
+  		sell = prices[i + 1];
   	}
-  	if(sell - buy > maxProfit){
-  		maxProfit = sell - buy
-  	}
-  	if(buy === prices[prices.length - 1] && sell === 0){
-  		return 'No transaction is done, your max profit = 0';
+  	if(sell - buy > profit){
+  		profit = sell - buy
   	}
   }
-  return 'max profit = ' + maxProfit;
+  return 'max profit = ' + profit;
 };

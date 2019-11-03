@@ -32,45 +32,29 @@
             filter_list([1,2,'aasf','1','123',123]) == [1,2,123]
 */
 //1
-function romanNumbers(str, result) {
-	result = result || 0;
-	if(str.length === 0) {
-		return result;
+function romanNumbers(str){
+	var result = 0;
+	var numbers = {
+		I : 1,
+		V : 5,
+		X :	10,
+		L : 50,
+		C : 100,
+		D : 500,
+		M : 1000
 	}
-	if(str.length > 1){
-		if(str[0].toUpperCase() === 'I' && (str[1].toUpperCase() === 'V') || (str[1].toUpperCase() === 'X')){
-		result -= 1;
-		return romanNumbers(str.slice(1), result)
+	function innerFunction(str){
+		if(str.length === 0) {
+			return result;
+		}
+		if(numbers[str[0]] < numbers[str[1]]){
+			result = result + (numbers[str[1]] - numbers[str[0]])
+			return innerFunction(str.slice(2))
+		}
+		result += numbers[str[0]]
+		return innerFunction(str.slice(1))
 	}
-	}
-	if(str[0].toUpperCase() === 'I'){
-		result += 1;
-		return romanNumbers(str.slice(1), result)
-	}
-	if(str[0].toUpperCase() === 'V'){
-		result += 5;
-		return romanNumbers(str.slice(1), result)
-	}
-	if(str[0].toUpperCase() === 'X'){
-		result += 10;
-		return romanNumbers(str.slice(1), result)
-	}
-	if(str[0].toUpperCase() === 'L'){
-		result += 50;
-		return romanNumbers(str.slice(1), result)
-	}
-	if(str[0].toUpperCase() === 'C'){
-		result += 100;
-		return romanNumbers(str.slice(1), result)
-	}
-	if(str[0].toUpperCase() === 'D'){
-		result += 500;
-		return romanNumbers(str.slice(1), result)
-	}
-	if(str[0].toUpperCase() === 'M'){
-		result += 1000;
-		return romanNumbers(str.slice(1), result)
-	}
+	return innerFunction(str);
 }
 
 //2
