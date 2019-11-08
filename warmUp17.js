@@ -27,6 +27,16 @@
 
 // ​
 // ​
-// var calculateTime = function(keyboard, word) {
-    
-// };
+var calculateTime = function(keyboard, word) {
+	var time = 0;
+	var lastIndex = 0;
+	for(var i = 0; i < word.length; i++){
+		if((lastIndex - keyboard.indexOf(word[i])) < 0){
+			time = time + ((lastIndex - keyboard.indexOf(word[i])) * -1);
+		}else {
+			time = time + (lastIndex - keyboard.indexOf(word[i]))	
+		}
+		lastIndex = keyboard.indexOf(word[i])
+	}
+	return time;    
+};
