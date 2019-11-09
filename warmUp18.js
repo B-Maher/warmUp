@@ -10,3 +10,18 @@
 
 // input   =  "aaaaaaaaaaaa"
 // result  =  "123456789101112"
+
+function countOccurance(str){
+	var result = "";
+	var obj = {};
+	for (var i = 0; i < str.length; i++){
+		if(obj[str[i]] === undefined){
+			obj[str[i]] = 1;
+			result += obj[str[i]];
+		}else {
+			obj[str[i]]++;
+			result += obj[str[i]];
+		}
+	}
+	return result;
+}
